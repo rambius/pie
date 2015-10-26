@@ -20,7 +20,10 @@
 	  depends="-init"
 	  description="Compiles the project's classes">
     <mkdir dir="${project.classes}"/>
-    <javac srcdir="${project.src}" destdir="${project.classes}" debug="on">
+    <javac srcdir="${project.src}"
+	   destdir="${project.classes}"
+	   debug="on"
+	   includeantruntime="no">
       <compilerarg value="-Xlint"/>
     </javac>
   </target>
@@ -63,7 +66,10 @@
 	  depends="-test.init,compile"
 	  description="Compiles the project's test classes">
     <mkdir dir="${project.test.classes}"/>
-    <javac srcdir="${project.test.src}" destdir="${project.test.classes}" debug="on">
+    <javac srcdir="${project.test.src}"
+	   destdir="${project.test.classes}"
+	   debug="on"
+	   includeantruntime="yes">
       <compilerarg value="-Xlint"/>
       <classpath refid="test.compile.cp"/>
     </javac>
