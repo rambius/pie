@@ -23,7 +23,6 @@ public class BST<T extends Comparable<T>> {
 	    return;
 	}
 	if (value.compareTo(node.getValue()) == -1) {
-	    System.out.println(String.valueOf(value) + " left");
 	    BinNode<T> left = node.getLeft();
 	    if (left == null) {
 		left = new BinNode<T>(value);
@@ -31,12 +30,11 @@ public class BST<T extends Comparable<T>> {
 	    } else {
 		addRec(value, left);
 	    }
-	} else {
-	    System.out.println(String.valueOf(value) + " right");
+	} else{ 
 	    BinNode<T> right = node.getRight();
 	    if (right == null) {
 		right = new BinNode<T>(value);
-		right.setRight(right);
+		node.setRight(right);
 	    } else {
 		addRec(value, right);
 	    }
