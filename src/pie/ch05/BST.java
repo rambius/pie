@@ -30,7 +30,7 @@ public class BST<T extends Comparable<T>> {
 	    } else {
 		addRec(value, left);
 	    }
-	} else{ 
+	} else { 
 	    BinNode<T> right = node.getRight();
 	    if (right == null) {
 		right = new BinNode<T>(value);
