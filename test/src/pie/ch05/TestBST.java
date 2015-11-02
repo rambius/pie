@@ -96,6 +96,36 @@ public class TestBST {
 
     @Test
     public void test_find_rec_empty() {
-	assertNull(empty.findRec(4))
+	assertNull(empty.findRec(4));
+    }
+
+    @Test
+    public void test_find_rec_small() {
+	int value = 1;
+	BinNode<Integer> node = small.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
+
+	value = 14;
+	node = small.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
+
+	value = 8;
+	node = small.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
+    }
+
+    @Test
+    public void test_find_rec_big() {
+	int value = 1;
+	BinNode<Integer> node = big.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
+
+	value = 10;
+	node = big.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
+
+	value = 7;
+	node = big.findRec(value);
+	assertEquals(new Integer(value), node.getValue());
     }
 }
