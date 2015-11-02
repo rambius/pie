@@ -19,10 +19,10 @@ public class BST<T extends Comparable<T>> {
     }
 
     private void addRec(T value, BinNode<T> node) {
-	if (value.compareTo(node.getValue()) == 0) {
+	int c = value.compareTo(node.getValue());
+	if (c == 0) {
 	    return;
-	}
-	if (value.compareTo(node.getValue()) == -1) {
+	} else if (c == -1) {
 	    BinNode<T> left = node.getLeft();
 	    if (left == null) {
 		left = new BinNode<T>(value);
@@ -50,5 +50,49 @@ public class BST<T extends Comparable<T>> {
 	    return 0;
 	}
 	return 1 + sizeRec(node.getLeft()) + sizeRec(node.getRight());
+    }
+
+    public boolean isEmpty() {
+	return root == null;
+    }
+
+    public T min() {
+	if (isEmpty()) {
+	    return null;
+	}
+	BinNode<T> node = root;
+	while (node.getLeft() != null) {
+	    node = node.getLeft();
+	}
+	return node.getValue();
+    }
+
+    public T max() {
+	if (isEmpty()) {
+	    return null;
+	}
+	BinNode<T> node = root;
+	while (node.getRight() != null) {
+	    node = node.getRight();
+	}
+	return node.getValue();
+    }
+
+    public BinNode<T> findRec(T value) {
+	if (root == null) {
+	    return null;
+	}
+    	return findRec(value, root);
+    }
+
+    public BinNode<T> findRec(T value, BinNode<T> node) {
+	int c = value.compareTo(node.getValue());
+	if (c == 0) {
+	    return node;
+	} else if (c < 0) {
+	    return findRec(value, node.getLeft());
+	} else {
+	    return findRec(value, node.getRight());
+	}
     }
 }
