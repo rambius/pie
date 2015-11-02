@@ -93,4 +93,9 @@ public class TestBST {
     public void test_max_big() {
 	assertEquals(new Integer(12), big.max());
     }
+
+    @Test
+    public void test_find_rec_empty() {
+	assertNull(empty.findRec(4))
+    }
 }
