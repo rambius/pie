@@ -7,7 +7,7 @@ public class Account {
     private String userFirstName;
     private double userBalance;
 
-    public boolean deposit(double amount) {
+    public synchronized boolean deposit(double amount) {
 	double newBalance;
 	if (amount < 0.0) {
 	    return false;
@@ -18,7 +18,7 @@ public class Account {
 	}
     }
 
-    public boolean withdraw(double amount) {
+    public synchronized boolean withdraw(double amount) {
 	double newBalance;
 	if (amount < 0.0 || amount > userBalance) {
 	    return false;
