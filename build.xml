@@ -39,7 +39,7 @@
 	  description="Runs a project class">
     <fail unless="main.class"
 	  message="Provide the main class as -Dmain.class=... property"/>
-    <java classname="${main.class}">
+    <java classname="${main.class}" fork="yes">
       <classpath refid="runtime.cp"/>
     </java>
   </target>
