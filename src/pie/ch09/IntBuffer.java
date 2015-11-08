@@ -14,7 +14,7 @@ public class IntBuffer {
 	index = 0;
     }
 
-    public void add(int num) {
+    public synchronized void add(int num) {
 	while(true) {
 	    if (index < buffer.length) {
 		buffer[index++] = num;
@@ -23,7 +23,7 @@ public class IntBuffer {
 	}
     }
 
-    public int remove() {
+    public synchronized int remove() {
 	while(true) {
 	    if (index > 0) {
 		return buffer[--index];
