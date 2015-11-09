@@ -10,7 +10,13 @@ public class DiningPhilosophers {
 	philosophers = new Philosopher[num];
 	for (int i = 0; i < num; i++) {
 	    forks[i] = new Object();
-	    philosophers[i] = new Philosopher(i, i + 1, (i + 1) % num);
+	    int fork1 = i;
+	    int fork2 = (i + 1) % num;
+	    if (i == 0) {
+		philosophers[i] = new Philosopher(i, fork2, fork1);
+	    } else {
+		philosophers[i] = new Philosopher(i, fork1, fork2);
+	    }
 	}
     }
 
