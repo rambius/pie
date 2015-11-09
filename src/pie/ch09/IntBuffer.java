@@ -15,19 +15,25 @@ public class IntBuffer {
     }
 
     public synchronized void add(int num) {
-	while(true) {
-	    if (index < buffer.length) {
-		buffer[index++] = num;
-		return;
+	if (index == buffer.length - 1) {
+	    try {
+		wait();
+	    } catch (InterruptedException ie) {
 	    }
 	}
+	buffer[index++] = num;
+	notifyAll();
     }
 
     public synchronized int remove() {
-	while(true) {
-	    if (index > 0) {
-		return buffer[--index];
+	while(index == 0) {
+	    try {
+		wait();
+	    } catch (InterruptedException ie) {
 	    }
 	}
+	int ret =  buffer[--index];
+	notifyAll();
+	return ret;
     }
 }
